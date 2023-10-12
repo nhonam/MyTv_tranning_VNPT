@@ -39,17 +39,22 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val model: HomeViewModel by viewModels()
 
-//        val imageList = ArrayList<SlideModel>()
+        val imageList = ArrayList<SlideModel>()
 //        model.getSlides().observe(viewLifecycleOwner, Observer<List<Slide>>{ slides ->
 //            // update UI
 //            for (slide in slides) {
 //
 //                imageList.add(SlideModel(slide.logo,slide.title))
-//                fragmentHomeBinding.imageSlider.setImageList(imageList)
+//
 //            }
 //            fragmentHomeBinding.imageSlider.setImageList(imageList)
 //
 //        })
+        imageList.add(SlideModel("https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png","nam"))
+        imageList.add(SlideModel("https://vcdn-sohoa.vnecdn.net/2021/08/20/GG-1-2915-1629449037.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=IJdl-m_Y45e7wjWxpTjLmg","nam"))
+        imageList.add(SlideModel("https://s2129132.cdn.mytvnet.vn/vimages/408x232/ff/f7/7a/ae/ee/ea/ff7ae-lnuaichisongca0-content-mytv.jpg","nam"))
+
+        fragmentHomeBinding.imageSlider.setImageList(imageList)
 
         val liveEventList = ArrayList<LiveEvent>()
         model.getLiveEvents().observe(viewLifecycleOwner, Observer<List<LiveEvent>>{ liveEvents ->

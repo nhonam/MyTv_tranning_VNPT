@@ -37,10 +37,10 @@ class LiveEventAdapter(private val context: Context, private val dataSet:ArrayLi
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.view.name.text = dataSet[position].content_title.toString()
         val contentImageUrl: String = dataSet[position].content_image_url.toString()
-        Log.d("abc", contentImageUrl)
+
 //        Glide.with(context).load(dataSet[position].content_image_url).into(holder.view.image);
         Glide.with(context)
-            .load(contentImageUrl)
+            .load("https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png")
 //            .apply(RequestOptions().override(50, 50))
             .addListener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
