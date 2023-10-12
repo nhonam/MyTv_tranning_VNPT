@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+    >
+    <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="Trang chủ"/>
+    <item
+        android:id="@+id/truyenhinh"
+        android:enabled="true"
+        android:icon="@drawable/ic_tv"
+        android:title="Truyền hình"/>
+    <item
+        android:id="@+id/film"
+        android:enabled="true"
+        android:icon="@drawable/ic_film"
+        android:title="Phim truyện"/>
+
+    <item
+        android:id="@+id/hbo"
+        android:enabled="true"
+        android:icon="@drawable/ic_hbd"
+        android:title="HBO Go"/>
+
+    <item
+        android:id="@+id/orther"
+        android:enabled="true"
+        android:icon="@drawable/dot_horizontal"
+        android:title="Khác"/>
+
+
+
+</menu>
