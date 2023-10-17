@@ -8,13 +8,13 @@ import com.example.android.marsphotos.ui.television.Fragment.AllchannelFragment
 import com.example.android.marsphotos.ui.television.Fragment.InternationalFragment
 
 
-private const val NUM_TABS = 2
+private const val NUM_TABS_TELEVISION = 2
 
 public class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
 
     override fun getItemCount(): Int {
-        return NUM_TABS
+        return NUM_TABS_TELEVISION
     }
 
     override fun createFragment(position: Int): Fragment {

@@ -7,10 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.models.SlideModel
-import com.example.android.marsphotos.data.db.entities.LiveEvent
-import com.example.android.marsphotos.data.db.entities.Slide
+import com.example.android.marsphotos.data.model.Home.Data
 import com.example.android.marsphotos.databinding.FragmentHomeBinding
 import com.example.android.marsphotos.ui.home.adapter.LiveEventAdapter
 
@@ -40,40 +38,22 @@ class HomeFragment : Fragment() {
         val model: HomeViewModel by viewModels()
 
         val imageList = ArrayList<SlideModel>()
-//        model.getSlides().observe(viewLifecycleOwner, Observer<List<Slide>>{ slides ->
-//            // update UI
-//            for (slide in slides) {
-//
-//                imageList.add(SlideModel(slide.logo,slide.title))
-//
-//            }
-//            fragmentHomeBinding.imageSlider.setImageList(imageList)
-//
-//        })
-        imageList.add(SlideModel("https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png","nam"))
-        imageList.add(SlideModel("https://vcdn-sohoa.vnecdn.net/2021/08/20/GG-1-2915-1629449037.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=IJdl-m_Y45e7wjWxpTjLmg","nam"))
-        imageList.add(SlideModel("https://s2129132.cdn.mytvnet.vn/vimages/408x232/ff/f7/7a/ae/ee/ea/ff7ae-lnuaichisongca0-content-mytv.jpg","nam"))
-
-        fragmentHomeBinding.imageSlider.setImageList(imageList)
-
-        val liveEventList = ArrayList<LiveEvent>()
-        model.getLiveEvents().observe(viewLifecycleOwner, Observer<List<LiveEvent>>{ liveEvents ->
+        model.getData().observe(viewLifecycleOwner, Observer<Data?>{ data ->
             // update UI
-            for (liveEvent in liveEvents) {
 
-                liveEventList.add(LiveEvent(liveEvent.content_id,liveEvent.content_title,liveEvent.content_image_url))
+            //set UI for slide
+            data.trailer.data.map {
 
+                imageList.add(SlideModel(it.CONTENT_IMAGE_URL,it.CONTENT_TITLE))
             }
+            fragmentHomeBinding.imageSlider.setImageList(imageList)
 
-            adapter = LiveEventAdapter(requireActivity(), liveEventList)
 
+            //set UI for recycle view list Event live
+            adapter = LiveEventAdapter(requireActivity(), data.service)
             fragmentHomeBinding.recyclerView.adapter = adapter
 
         })
-
-
-
-
 
         return fragmentHomeBinding.root;
     }

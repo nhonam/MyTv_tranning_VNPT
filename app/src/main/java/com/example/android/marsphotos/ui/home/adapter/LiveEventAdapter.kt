@@ -13,10 +13,11 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.example.android.marsphotos.data.db.entities.LiveEvent
+import com.example.android.marsphotos.data.model.Home.Service
 import com.example.android.marsphotos.databinding.ItemListEventBinding
 
 
-class LiveEventAdapter(private val context: Context, private val dataSet:ArrayList<LiveEvent>
+class LiveEventAdapter(private val context: Context, private val dataSet:List<Service>
 )
     : RecyclerView.Adapter<LiveEventAdapter.ViewHolder>()
 {
@@ -35,35 +36,13 @@ class LiveEventAdapter(private val context: Context, private val dataSet:ArrayLi
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.view.name.text = dataSet[position].content_title.toString()
-        val contentImageUrl: String = dataSet[position].content_image_url.toString()
+        holder.view.name.text = dataSet[position].title
+        val contentImageUrl: String = dataSet[position].logo
 
 //        Glide.with(context).load(dataSet[position].content_image_url).into(holder.view.image);
         Glide.with(context)
-            .load("https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png")
+            .load(contentImageUrl)
 //            .apply(RequestOptions().override(50, 50))
-            .addListener(object : RequestListener<Drawable> {
-                override fun onLoadFailed(
-                    e: GlideException?,
-                    model: Any?,
-                    target: Target<Drawable>,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    Log.d("abc", e?.message ?: "")
-                    return true
-                }
-
-                override fun onResourceReady(
-                    resource: Drawable,
-                    model: Any,
-                    target: Target<Drawable>?,
-                    dataSource: DataSource,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    Log.d("abc", "gggg")
-                    return false
-                }
-            })
             .into(holder.view.image)
     }
 }

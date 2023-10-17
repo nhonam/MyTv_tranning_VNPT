@@ -9,7 +9,7 @@
 
     <data>
         <variable
-            name="viewmodel"
+            name="viewmodel_login"
             type="com.example.android.marsphotos.ui.auth.AuthViewModel" />
     </data>
     <LinearLayout
@@ -61,7 +61,7 @@
                 >
 
                 <EditText
-                    android:text="@={viewmodel.email}"
+                    android:text="@={viewmodel_login.email}"
                     android:id="@+id/username"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -69,9 +69,8 @@
                     android:drawablePadding="8dp"
                     android:gravity="center_vertical"
                     android:hint="Tên đăng nhập / Số điện thoại"
-                    android:inputType="textPassword"
+                    android:inputType="text"
                     android:padding="10dp"
-
                     android:textColor="@color/black"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -99,7 +98,7 @@
                 app:passwordToggleEnabled="true">
 
                 <EditText
-                    android:text="@={viewmodel.password}"
+                    android:text="@={viewmodel_login.password}"
                     android:id="@+id/login_password"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -140,7 +139,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
 
-            android:onClick="@{() -> viewmodel.onButtonLoginClick()}"           android:id="@+id/btnLogin"
+            android:onClick="@{() -> viewmodel_login.onButtonLoginClick()}"           android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginEnd="20dp"

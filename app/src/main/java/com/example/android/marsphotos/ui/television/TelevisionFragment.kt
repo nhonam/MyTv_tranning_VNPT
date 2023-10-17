@@ -33,6 +33,13 @@ class TelevisionFragment : Fragment() {
     ): View? {
         televisionFragmentBinding = FragmentTelevisionBinding.inflate(inflater, container, false)
 
+        setupTabLayout()
+
+        // Inflate the layout for this fragment
+        return  televisionFragmentBinding.root;
+    }
+
+    fun setupTabLayout() {
         val viewPager = televisionFragmentBinding.viewPager
         val tabLayout = televisionFragmentBinding.tabLayout
         val fragmentManager: FragmentManager = getChildFragmentManager()
@@ -44,9 +51,6 @@ class TelevisionFragment : Fragment() {
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = CategoryArray[position]
         }.attach()
-
-        // Inflate the layout for this fragment
-        return  televisionFragmentBinding.root;
     }
 
 }

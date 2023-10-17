@@ -15,6 +15,11 @@ import com.example.android.marsphotos.ui.television.TelevisionFragment
 class MainActivity : AppCompatActivity() {
 
    private lateinit var binding : ActivityMainBinding
+//   var homeFragment: HomeFragment =  HomeFragment()
+//    var televisionFragment: TelevisionFragment = TelevisionFragment()
+//    var filmFragment: FilmFragment = FilmFragment()
+//    var hboFragment: HBOFragment = HBOFragment()
+//    var ortherFragment: OrtherFragment = OrtherFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

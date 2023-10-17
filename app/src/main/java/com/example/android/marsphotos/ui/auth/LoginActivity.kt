@@ -1,6 +1,6 @@
 package com.example.android.marsphotos.ui.auth
 
-import android.content.Context
+import  android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Window
@@ -27,7 +27,8 @@ class LoginActivity : AppCompatActivity(), AuthListener{
 
         val binding:ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
          viewModel =  ViewModelProvider(this).get(AuthViewModel::class.java)
-         binding.viewmodel = viewModel
+         binding.viewmodelLogin = viewModel
+
          viewModel.authListener = this
 
 
@@ -41,12 +42,11 @@ class LoginActivity : AppCompatActivity(), AuthListener{
 
     }
 
-    override fun onSuccess(user:User) {
+    override fun onSuccess(user:User, session:String) {
         LoadingCustom.dismissDialog();
         val sharedPreference =  getSharedPreferences("User_Curent", Context.MODE_PRIVATE)
         var editor = sharedPreference.edit()
-        editor.putString("username"," user.username_mytv")
-        editor.putLong("l",100L)
+        editor.putString("session",session)
         editor.commit()
         ToastCustom.makeText(
             this,

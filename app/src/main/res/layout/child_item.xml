@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout >
+
+    <data>
+        <variable
+            name="child_item"
+            type="com.example.android.marsphotos.ui.film.ultil.ChildItem" />
+
+    </data>
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:background="@color/black"
+        android:layout_height="wrap_content">
+
+        <!--CardView that holds the elements
+            of the child RecyclerView -->
+        <androidx.cardview.widget.CardView
+            android:background="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+            <RelativeLayout
+                android:background="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <!--Image in the CardView-->
+                <!--Here we have already given
+                    the source for the ImageView
+                    and we will not assign it
+                    in the Java code-->
+                <!--So all the ImageViews will
+                    hold the same image-->
+                <ImageView
+                    android:id="@+id/img_child_item"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@color/white"
+                    android:src="@drawable/logo"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/img_child_item"
+                    android:padding="12dp"
+                    android:layout_below="@+id/img_child_item"
+                    android:layout_alignParentStart="true"
+                    android:orientation="vertical">
+
+                    <!--Text in the CardView-->
+                    <TextView
+                        android:text="@{child_item.childItemTitle}"
+                        android:textColor="@color/white"
+                        android:id="@+id/child_item_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        />
+                </LinearLayout>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+    </FrameLayout>
+
+</layout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="itemLatesFilm"
+            type="com.example.android.marsphotos.data.model.film.Film" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:backgroundTint="#BDBDBD"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="5dp">
+
+        <ImageView
+
+            android:id="@+id/image_latest_fil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:textColor="@color/white"
+            android:text="@{itemLatesFilm.CONTENT_TITLE}"
+            android:id="@+id/name_latest_fiml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/image"
+            />
+    </androidx.cardview.widget.CardView>
+</layout>

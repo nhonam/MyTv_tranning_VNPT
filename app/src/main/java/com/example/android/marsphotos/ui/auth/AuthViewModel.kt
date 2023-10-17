@@ -6,11 +6,11 @@ import com.example.android.marsphotos.data.db.entities.User
 import com.example.android.marsphotos.data.repository.UserRepository
 import com.example.android.marsphotos.util.ApiExceptions
 import com.example.android.marsphotos.util.Coroutines
-import com.example.android.marsphotos.util.LoadingCustom
 import com.google.gson.JsonObject
 
 
 class AuthViewModel :  ViewModel(){
+
 
     var email:String ? = null
     var password:String? = null
@@ -19,9 +19,14 @@ class AuthViewModel :  ViewModel(){
 
 
 
-     fun onButtonLoginClick() {
 
+     fun onButtonLoginClick() {
+         println(email)
+         println(password)
+         println("---------------")
         authListener?.onStarted()
+
+         email
 
 
         var logginResponse : String? = null
@@ -43,6 +48,7 @@ class AuthViewModel :  ViewModel(){
              try {
                  val loginResponse = UserRepository().userLogin(params)
                  val body:JsonObject = loginResponse?.get("response") as JsonObject
+                 val session:String = body.get("session").asString
                  val user = User(
                      member_id = body.get("member_id").toString(),
                      product_id = body.get("product_id").toString(),
@@ -51,9 +57,9 @@ class AuthViewModel :  ViewModel(){
                      user_team_id = body.get("user_team_id").toString(),
                      user_type = body.get("user_type").toString(),
                      manufacturer_id = body.get("manufacturer_id").toString(),
-                     product_plugin = body.get("product_plugin").toString()
+                     product_plugin = body.get("product_plugin").toString(),
                  )
-                 authListener?.onSuccess(user)
+                 authListener?.onSuccess(user,session)
              }catch (e: ApiExceptions) {
                  authListener?.onFailure(e.message!!)
              }

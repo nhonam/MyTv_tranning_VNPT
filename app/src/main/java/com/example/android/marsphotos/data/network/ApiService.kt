@@ -1,5 +1,9 @@
 package com.example.android.marsphotos.data.network
 
+import com.example.android.marsphotos.data.model.Home.ResponseHome
+import com.example.android.marsphotos.data.model.Television.ResponseAllChannel
+import com.example.android.marsphotos.data.model.Orther.UserInfo
+import com.example.android.marsphotos.data.model.film.ResponseFilm
 import com.google.gson.JsonObject
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -18,11 +22,19 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("home-page1-v2")
-    suspend fun getInforHomeApi(@FieldMap map: HashMap<String, String>): Response<JsonObject>
+    suspend fun getInforHomeApi(@FieldMap map: HashMap<String, String>): ResponseHome
 
     @FormUrlEncoded
     @POST("channel/list-v3")
-    suspend fun getChannels(@FieldMap map: HashMap<String, String>): Response<JsonObject>
+    suspend fun getChannels(@FieldMap map: HashMap<String, String>): ResponseAllChannel
+
+    @FormUrlEncoded
+    @POST("content/home")
+    suspend fun getCategoryFilmAndFilmItem(@FieldMap map: HashMap<String, String>): ResponseFilm
+
+    @FormUrlEncoded
+    @POST("account/info-v5")
+    suspend fun getInfoAccount(@FieldMap map: HashMap<String, String>): UserInfo
 
 
 
